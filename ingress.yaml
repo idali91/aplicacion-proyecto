@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: reversewords
+  namespace: reverse-words-desarrollo
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: reversewords-desarrollo.apps.k8s.kubelabs.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: reversewords
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - reversewords-desarrollo.apps.k8s.kubelabs.org
