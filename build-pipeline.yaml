@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
   name: reverse-words-git
+  namespace: reverse-words-ci
 spec:
   type: git
   params:
@@ -16,6 +17,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
   name: reverse-words-image
+  namespace: reverse-words-ci
 spec:
   type: image
   params:
@@ -26,6 +28,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
   name: reverse-words-build-pipeline
+  namespace: reverse-words-ci
 spec:
   resources:
   - name: app-git
