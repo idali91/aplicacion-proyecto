@@ -22,7 +22,7 @@ spec:
   type: image
   params:
   - name: url
-    value: quay.io/idali91/aplicacion-proyecto
+    value: quay.io/ileonc/aplicacion-proyecto
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
@@ -101,9 +101,9 @@ spec:
       - name: file-path
         value: "deployment.yaml"
       - name: image-repo
-        value: "quay.io/idali91/aplicacion-proyecto"
+        value: "quay.io/ileonc/aplicacion-proyecto"
       - name: new-image-url
-        value: "quay.io/idali91/aplicacion-proyecto:$(params.imageTag)"
+        value: "quay.io/ileonc/aplicacion-proyecto:$(params.imageTag)"
       - name: source-branch
         value: "desarrollo"
       - name: source-repo
