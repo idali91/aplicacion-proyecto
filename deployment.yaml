@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reverse-words
-  namespace: reverse-words-desarrollo
   labels:
     app: reverse-words
+  name: reverse-words
+  namespace: reverse-words-desarrollo
 spec:
   replicas: 1
   selector:
@@ -16,25 +16,25 @@ spec:
         app: reverse-words
     spec:
       containers:
-      - name: reverse-words
-        image: quay.io/ileonc/aplicacion-proyecto:latest
-        ports:
-        - containerPort: 8080
-          name: http
-        env:
+      - env:
         - name: RELEASE
-          value: "Desarrollo"
+          value: Desarrollo
+        image: quay.io/ileonc/aplicacion-proyecto:pipeline-manual
         livenessProbe:
           httpGet:
             path: /health
             port: 8080
           initialDelaySeconds: 5
-          timeoutSeconds: 2
           periodSeconds: 15
+          timeoutSeconds: 2
+        name: reverse-words
+        ports:
+        - containerPort: 8080
+          name: http
         readinessProbe:
           httpGet:
             path: /health
             port: 8080
           initialDelaySeconds: 10
-          timeoutSeconds: 2
           periodSeconds: 15
+          timeoutSeconds: 2
