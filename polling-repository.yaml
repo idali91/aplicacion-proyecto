@@ -1,0 +1,36 @@
+apiVersion: polling.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: aplicacion-proyecto
+  namespace: tekton-pipelines
+spec:
+  url: https://github.com/idali91/aplicacion-proyecto.git
+  ref: main
+  frequency: 1m
+  type: github
+  pipelineRef:
+    serviceAccountName: reversewords-pipeline
+    name: reverse-words-build-pipeline
+    namespace: reverse-words-ci
+    params:
+    - name: imageTag
+      expression: commit.sha
+    - name: repoSha
+      expression: commit.sha
+    - name: repoUrl
+      expression: repoURL
+    resources:
+    - name: app-git
+      resourceSpec:
+        type: git
+        params:
+        - name: url
+          value: $(params.repoUrl)
+        - name: revision
+          value: $(params.repoSha)
+    - name: app-image
+      resourceSpec:
+        type: image
+        params:
+        - name: url
+          value: "quay.io/ileonc/aplicacion-proyecto"
