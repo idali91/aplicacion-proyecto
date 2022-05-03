@@ -6,7 +6,7 @@ metadata:
   name: reverse-words
   namespace: reverse-words-desarrollo
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: reverse-words
