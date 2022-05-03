@@ -19,7 +19,7 @@ spec:
       - env:
         - name: RELEASE
           value: Desarrollo
-        image: quay.io/ileonc/aplicacion-proyecto:pipeline-manual
+        image: quay.io/ileonc/aplicacion-proyecto:e2694ad09f8e03c58c186b7f94a4d741dbb835ba
         livenessProbe:
           httpGet:
             path: /health
