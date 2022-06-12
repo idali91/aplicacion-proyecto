@@ -40,8 +40,7 @@ var (
 	)
 )
 
-var version = "v0.0.1"
-fallo
+var version = "v0.0.2"
 // ReturnRelease returns the release configured by the user
 func ReturnRelease(w http.ResponseWriter, r *http.Request) {
 	release := getEnv("RELEASE", "NotSet")
