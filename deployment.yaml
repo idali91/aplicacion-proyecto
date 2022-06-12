@@ -19,7 +19,7 @@ spec:
       - env:
         - name: RELEASE
           value: Desarrollo
-        image: quay.io/ileonc/aplicacion-proyecto:2187a2ea32ac5dd6593000144b2911ff075170e3
+        image: quay.io/ileonc/aplicacion-proyecto:e962c454f7c67b56c68dcd3c690aea2405105c70
         livenessProbe:
           httpGet:
             path: /health
